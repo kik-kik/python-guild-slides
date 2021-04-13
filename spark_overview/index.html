@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Intro to Spark & PySpark
+
+---
+
+### Disclaimer
+
+I am not a Spark expert, and I've only ever written one job in it.
+
+Please keep this in mind...
+
+---
+
+# What is Spark?
+
+- Distributed processing framework (batch or real-time)
+- Written in Scala and runs inside JVM (Java Virtual Machine)
+- Supports multiple languages like Scala, Java, Python, etc
+
+
+# Spark architecture
+
+Spark uses master/agent architecture:
+
+- __driver__ (master) - converts code into tasks that can be distributed to workers
+- __executors__ (agent) - run on worker nodes and execute tasks assigned to them (this is where your code is run)
+
+---
+
+# Spark Components
+
+- Spark Core - execution engine, provides in-memory computing and referencing dor daa sets in external storage systems?
+- PySpark - 
+- Spark SQL - 
+- Spark MLlib - 
+- Spark GraphX - 
+- SparkR - provides SparkR DataFrames, data structures for data processing in R that extend to other languages with libraries such as Pandas. 
+- Spark Streaming - 
+
+---
+
+# Benefits of Spark
+
+- Spark is versatile, scalable, and fast
+- flexibility - can write Spark jobs in Java, Python, R, and Scala
+- in-memory computing -
+- real-time processing - 
+- better analytics - comes with a set of SQL queries, machine learning algorithms, and other analytical functionalities
+
+---
+
+# What can we use Spark for?
+
+- Stream processing, to act on data arriving as part of simultaneous streams from multiple sources. 
+- Machine learning, running fast, repeated queries on data stored in memory to train algorithms.  
+- Interactive analytics, getting quick results to questions. 
+- Data integration, consolidating ETL processes to reduce cost and time. 
+
+---
+
+# Spark RDD
+
+---
+
+# PySpark
+
+
+---
+
+# Why use PySpark?
+
+- Python is "easy" and a lot of people already know it
+- Python has a more mature echosystem for data analysis (like pandas or numpy) and visualisation
+- Python has a huge and active community
+
+- https://macxima.medium.com/databricks-pyspark-for-big-data-5ba150fecf87
+
+# Additional reading
+
+- https://www.snowflake.com/guides/what-spark
+- https://realpython.com/pyspark-intro/
+- https://www.edureka.co/blog/pyspark-programming/
+- https://towardsdatascience.com/sparksession-vs-sparkcontext-vs-sqlcontext-vs-hivecontext-741d50c9486a
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

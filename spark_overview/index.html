@@ -35,57 +35,106 @@ Please keep this in mind...
 
 # What is Spark?
 
+- Started in 2009 at UC Berkeley's RAD lab as a research project with goal of addressing MapReduce limitations (speed and easy of use)
+- Open-sourced in 2010 and in 2013 donated to the Apache Software Foundation.
 - Distributed processing framework (batch or real-time)
 - Written in Scala and runs inside JVM (Java Virtual Machine)
-- Supports multiple languages like Scala, Java, Python, etc
+- Supports multiple languages like Scala, Java, Python, SQL and more
 
+---
+
+# What can we use Spark for?
+
+- Stream processing, to act on data arriving as part of simultaneous streams from multiple sources
+- Machine learning, running fast, repeated queries on data stored in memory to train algorithms
+- Interactive analytics, getting quick results to questions
+- Data integration, consolidating ETL processes to reduce cost and time
+
+## Example use cases
+- Real-time monitoring of financial data
+- Text analysis elated to competitive and compliance
+- E-commerce pattern analysis of how customers use e-commerce sites
+
+---
+
+# Core Spark traits (why Spark)
+
+__In short__: Spark is versatile, scalable, and fast
+
+- __speed__ - can be up to 100 times faster in processing than traditional MapReduce jobs in Hadoop. This largely because of how Spark distributes work across its clusters and performs many of its operation in memory
+- __ease of use__ - offers over 80 high level operators that make it easy and fast to build applications and supports different languages
+- __generality__ (aka. flexibility) - different components and supports batch and real-time processing
+- __platform agnostic__ - can run on different platforms from Hadoop filesystem (HDFS), Hive or any other Hadoop data source, Spark 2.0 supports connection to traditional relational DBs using dataframes
+
+---
+
+# Spark Components
+
+- __Spark Core__ - Spark Core - fundamental component responsible for task distribution, scheduling, memory management, fault recovery, input/output operations and interaction with storage systems. When using any other component spark core is also used.
+- __PySpark__ - an abstraction wrapper for around Spark Core written in Python.
+- __Spark SQL__ - for relational querying using ANSI standard SQL. This also enabled tools like Tableau to easily integrate with Spark. Spark SQL uses DataFrames, in SQL a table can be considered a DataFrame.
+- __Spark MLlib__ - Mllib enables machine learning algorithms to run. Includes many common machine learning functions
+- __Spark GraphX__ - for graph analysis/processing such as social network analysis
+- __SparkR__ - provides SparkR DataFrames, data structures for data processing in R that extend to other languages with libraries such as Pandas
+- __Spark Streaming__ - for continues processing of streaming data, it enables us to process data as it comes in. Runs in micro batches (not true stream processing). Uses lambda architecture, a this is a method of getting historical data initially and then as data comes in aggregating on top of that metric.
+
+---
+
+![https://www.kdnuggets.com/wp-content/uploads/spark-7-1.jpg](https://www.kdnuggets.com/wp-content/uploads/spark-7-1.jpg)
+
+---
 
 # Spark architecture
 
 Spark uses master/agent architecture:
 
 - __driver__ (master) - converts code into tasks that can be distributed to workers
-- __executors__ (agent) - run on worker nodes and execute tasks assigned to them (this is where your code is run)
+- __executors__ (agent) - run on worker nodes, executes tasks assigned to them (this is where your code is run) and manages data in memory or on disk between tasks
+- __task__ - a unit of work that is sent to one executor
+
+Both are just processes, this means they can run on a single machine if on local node, or different if running in a cluster
+
+![https://static.javatpoint.com/tutorial/spark/images/spark-architecture.png](https://static.javatpoint.com/tutorial/spark/images/spark-architecture.png)
 
 ---
 
-# Spark Components
+# Spark architecture Cont.
 
-- Spark Core - execution engine, provides in-memory computing and referencing dor daa sets in external storage systems?
-- PySpark - 
-- Spark SQL - 
-- Spark MLlib - 
-- Spark GraphX - 
-- SparkR - provides SparkR DataFrames, data structures for data processing in R that extend to other languages with libraries such as Pandas. 
-- Spark Streaming - 
+Creating Spark Context is the step in any Spark application (the master of the Spark application):
+
+## The Driver Program
+- a process that runs the main() function of the application and creates the SparkContext object
 
 ---
 
-# Benefits of Spark
+# Spark architecture Cont.
 
-- Spark is versatile, scalable, and fast
-- flexibility - can write Spark jobs in Java, Python, R, and Scala
-- in-memory computing -
-- real-time processing - 
-- better analytics - comes with a set of SQL queries, machine learning algorithms, and other analytical functionalities
+## Spark Context
+- Allows to communicate with some of Spark's lower level APIs such as RDDs
+- The purpose of SparkContext is to coordinate the spark applications, running as independent sets of processes on a cluster
+- SparkContext sends tasks to the executors to run
 
----
-
-# What can we use Spark for?
-
-- Stream processing, to act on data arriving as part of simultaneous streams from multiple sources. 
-- Machine learning, running fast, repeated queries on data stored in memory to train algorithms.  
-- Interactive analytics, getting quick results to questions. 
-- Data integration, consolidating ETL processes to reduce cost and time. 
+## Cluster Manager
+- The role of the cluster manager is to allocate resources across applications
 
 ---
 
-# Spark RDD
+# Data interfaces
+
+- **Resilient Distributed Dataset** (RDD) - lowest level API for working with data in Spark. RDD is what makes Spark so fast and can provide data lineage across processes as they are completed. A bit like a container that allows you to work with data objects that can be of **different types** and spread across many machines in the cluster.
+- **DataFrame** - Similar to DataFrames in Python and R, can also think of them as a tables of data that allow you to query it. Unlike RDD, can **only contain rows**. (Untyped API `DataFrame = Dataset[row]`, sort of an alias)
+- **Dataset** - A combination of RDD and a DataFrame. Allows you to type your data like an RDD whilst being able to query it like a DataFrame. (Typed API `Dataset[Type]`)
+
+## Dataset operations
+
+- **Actions** - used to return results to our program, can also be used to trigger the execution of the other operation we can perform (transformation).
+- **Transformations** - known as lazy since they're only executed when called on by actions
 
 ---
 
 # PySpark
 
+Py4J is a Java library that is integrated within PySpark and allows python to dynamically interface with JVM objects, hence to run PySpark you also need Java to be installed along with Python, and Apache Spark.
 
 ---
 
@@ -97,15 +146,30 @@ Spark uses master/agent architecture:
 
 - https://macxima.medium.com/databricks-pyspark-for-big-data-5ba150fecf87
 
+---
+
+# Let's see it in action
+
+https://community.cloud.databricks.com
+
+---
+
+# Sources
+- https://www.linkedin.com/learning/apache-spark-essential-training
+- https://www.linkedin.com/learning/apache-pyspark-by-example
+- https://sparkbyexamples.com/pyspark/what-is-pyspark-and-who-uses-it/
+- https://www.javatpoint.com/apache-spark-architecture
+- https://databricks.com/glossary/what-is-rdd
+
+---
+
 # Additional reading
 
 - https://www.snowflake.com/guides/what-spark
 - https://realpython.com/pyspark-intro/
 - https://www.edureka.co/blog/pyspark-programming/
+- https://sparkbyexamples.com/pyspark
 - https://towardsdatascience.com/sparksession-vs-sparkcontext-vs-sqlcontext-vs-hivecontext-741d50c9486a
-
-
-
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">

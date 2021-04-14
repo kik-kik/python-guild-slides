@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Structural Pattern Matching in Python
+
+---
+
+# What is Structural Pattern Matching?
+
+
+---
+
+# Do we need it?
+
+???
+
+---
+
+# Not really, but...
+
+```Erlang
+{_,_} = {1,2}.
+X = 2.
+{X, Y} = {2, 3}.
+{X, Y} = {1, 2}. % ** exception error: no match of right hand side value {1,2}
+{X, Y} = {2, 3}. % ok.
+
+A = 5,
+case A of 
+  5 -> io:fwrite("The value of A is 5"); 
+  6 -> io:fwrite("The value of A is 6") 
+end.
+```
+
+### Sources:
+- http://erlang.org/doc//reference_manual/patterns.html
+- https://www.tutorialspoint.com/erlang/erlang_case_statements.htm
+
+
+# How does it look in Python?
+
+```Python
+
+```
+
+```Python
+
+```
+
+---
+
+# Further resources
+
+- PEP 634 -- Structural Pattern Matching: Specification - https://www.python.org/dev/peps/pep-0634/
+- PEP 635 -- Structural Pattern Matching: Motivation and Rationale - https://www.python.org/dev/peps/pep-0635/
+- PEP 636 -- Structural Pattern Matching: Tutorial - https://www.python.org/dev/peps/pep-0636/
+- Structural Pattern Matching / Match Statement by mCoding - https://www.youtube.com/watch?v=-79HGfWmH_w
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
